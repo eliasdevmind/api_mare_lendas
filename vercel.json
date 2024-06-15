@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "start.sh",
-      "use": "@vercel/node"
+      "src": "api/index.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "start.sh"
+      "dest": "api/index.py"
     }
   ]
 }

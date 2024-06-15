@@ -1,4 +1,3 @@
-# api/index.py
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -103,14 +102,6 @@ def login_user(user: UserLogin, db: Session = Depends(get_db)):
     access_token = create_access_token(data={"sub": db_user.username}, expires_delta=access_token_expires)
     return {"access_token": access_token, "token_type": "bearer"}
 
-# Adicione este trecho para usar o adaptador ASGI
-import uvicorn
-
-handler = app
-
-# Ponto de entrada para o Vercel
-def run_app():
-    uvicorn.run(handler, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
-
 if __name__ == "__main__":
-    run_app()
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
