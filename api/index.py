@@ -9,7 +9,7 @@ from pydantic import BaseModel, EmailStr
 from dotenv import load_dotenv
 import os
 
-# Carregar variáveis de ambiente
+# Carregar variáveis de ambiente atualiza
 load_dotenv()
 
 MYSQL_HOST = os.getenv("MYSQL_HOST")
