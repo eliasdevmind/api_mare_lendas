@@ -39,11 +39,14 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Configuração do CORS
+""" 
+    Configuração do CORS 
+    
+"""
 from fastapi.middleware.cors import CORSMiddleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Permitir acesso de qualquer origem
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
