@@ -47,7 +47,7 @@ Base.metadata.create_all(bind=engine)
 # Inicializar a aplicação FastAPI
 app = FastAPI()
 
-# Configuração de CORS
+# Configuração de CORS para permitir qualquer origem
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Permitir todas as origens
