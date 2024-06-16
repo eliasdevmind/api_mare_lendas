@@ -52,8 +52,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Permitir todas as origens
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Permitir todos os métodos HTTP
+    allow_headers=["*"],  # Permitir todos os cabeçalhos
 )
 
 # Dependência para obter a sessão do banco de dados
