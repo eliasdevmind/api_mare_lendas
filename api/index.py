@@ -9,7 +9,7 @@ from pydantic import BaseModel, EmailStr
 from dotenv import load_dotenv
 import os
 
-# Carregar variáveis de ambiente atualiza
+# Carregar variáveis de ambiente
 load_dotenv()
 
 MYSQL_HOST = os.getenv("MYSQL_HOST")
@@ -100,6 +100,7 @@ class UserLogin(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+    username: str
 
 class Message(BaseModel):
     msg: str
@@ -126,7 +127,7 @@ def login_user(user: UserLogin, db: Session = Depends(get_db)):
     
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(data={"sub": db_user.username}, expires_delta=access_token_expires)
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "token_type": "bearer", "username": db_user.username}
 
 if __name__ == "__main__":
     import uvicorn
